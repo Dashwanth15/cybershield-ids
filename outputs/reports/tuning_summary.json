@@ -1,0 +1,30 @@
+{
+  "winning_model_experiment": "Exp2a_Shallower_d4",
+  "best_hyperparameters": {
+    "n_estimators": 150,
+    "max_depth": 4,
+    "learning_rate": 0.15,
+    "subsample": 0.9,
+    "colsample_bytree": 0.9,
+    "min_child_weight": 3,
+    "gamma": 0.5,
+    "reg_alpha": 3.0,
+    "reg_lambda": 5.0,
+    "scale_pos_weight": 1.15,
+    "operating_threshold": 0.10
+  },
+  "initial_random_search_hyperparameters": {
+    "subsample": 0.9,
+    "scale_pos_weight": 1.15,
+    "reg_lambda": 2.0,
+    "reg_alpha": 1.0,
+    "n_estimators": 150,
+    "min_child_weight": 1,
+    "max_depth": 6,
+    "learning_rate": 0.15,
+    "gamma": 0.2,
+    "colsample_bytree": 0.9
+  },
+  "best_cv_f1": 0.9984,
+  "validation_operating_threshold": 0.10
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "feature": "src_bytes",
+    "mean_abs_shap": 3.1731014251708984
+  },
+  {
+    "feature": "dst_host_srv_count",
+    "mean_abs_shap": 1.1942386627197266
+  },
+  {
+    "feature": "count",
+    "mean_abs_shap": 0.8563035130500793
+  },
+  {
+    "feature": "dst_bytes",
+    "mean_abs_shap": 0.8058752417564392
+  },
+  {
+    "feature": "dst_host_same_src_port_rate",
+    "mean_abs_shap": 0.6590806245803833
+  },
+  {
+    "feature": "dst_host_same_srv_rate",
+    "mean_abs_shap": 0.5688677430152893
+  },
+  {
+    "feature": "service_private",
+    "mean_abs_shap": 0.5465329885482788
+  },
+  {
+    "feature": "dst_host_rerror_rate",
+    "mean_abs_shap": 0.5257836580276489
+  },
+  {
+    "feature": "dst_host_diff_srv_rate",
+    "mean_abs_shap": 0.34574779868125916
+  },
+  {
+    "feature": "dst_host_count",
+    "mean_abs_shap": 0.3441546857357025
+  },
+  {
+    "feature": "hot",
+    "mean_abs_shap": 0.3184615671634674
+  },
+  {
+    "feature": "service_ecr_i",
+    "mean_abs_shap": 0.31412699818611145
+  },
+  {
+    "feature": "service_http",
+    "mean_abs_shap": 0.26009976863861084
+  },
+  {
+    "feature": "protocol_type_icmp",
+    "mean_abs_shap": 0.25738999247550964
+  },
+  {
+    "feature": "logged_in",
+    "mean_abs_shap": 0.23615585267543793
+  },
+  {
+    "feature": "duration",
+    "mean_abs_shap": 0.21854333579540253
+  },
+  {
+    "feature": "srv_count",
+    "mean_abs_shap": 0.20734629034996033
+  },
+  {
+    "feature": "dst_host_srv_serror_rate",
+    "mean_abs_shap": 0.1904703676700592
+  },
+  {
+    "feature": "dst_host_serror_rate",
+    "mean_abs_shap": 0.18761427700519562
+  },
+  {
+    "feature": "dst_host_srv_diff_host_rate",
+    "mean_abs_shap": 0.16999800503253937
+  }
+]

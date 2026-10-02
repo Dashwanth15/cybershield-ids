@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberShield IDS | ML Intrusion Detection with XGBoost</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Top Navigation Header -->
+  <header class="cyber-header">
+    <div class="header-left">
+      <div class="brand-badge">
+        <div class="pulse-dot"></div>
+        <span class="shield-icon">🛡️</span>
+        <div class="brand-text">
+          <h1>CYBERSHIELD IDS</h1>
+          <span class="sub-brand">XGBoost Ensemble Network Intrusion Detection System</span>
+        </div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="model-badge">
+        <span class="badge-label">Active Model:</span>
+        <span class="badge-value" id="headerModelName">XGBoost Tuned</span>
+      </div>
+      <div class="model-badge">
+        <span class="badge-label">Decision Threshold:</span>
+        <span class="badge-value highlight" id="headerThreshold">τ = 0.50</span>
+      </div>
+      <div class="model-badge">
+        <span class="badge-label">Dataset:</span>
+        <span class="badge-value">NSL-KDD</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="cyber-nav">
+    <button class="nav-tab active" data-tab="tab-evolution">
+      <span class="nav-icon">🔬</span> Research &amp; Model Evolution
+    </button>
+    <button class="nav-tab" data-tab="tab-manual">
+      <span class="nav-icon">⚡</span> Manual Traffic Analyzer
+    </button>
+    <button class="nav-tab" data-tab="tab-whatif">
+      <span class="nav-icon">🧪</span> "What-If?" Sensitivity Lab
+    </button>
+    <button class="nav-tab" data-tab="tab-stream">
+      <span class="nav-icon">📡</span> Simulated Live Traffic Stream
+    </button>
+    <button class="nav-tab" data-tab="tab-batch">
+      <span class="nav-icon">📁</span> Batch CSV Prediction
+    </button>
+    <button class="nav-tab" data-tab="tab-performance">
+      <span class="nav-icon">📊</span> Performance &amp; Generalization
+    </button>
+    <button class="nav-tab" data-tab="tab-insights">
+      <span class="nav-icon">📈</span> Model Insights &amp; Visualizations
+    </button>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="cyber-container">
+
+    <!-- ======================================================== -->
+    <!-- TAB 0: RESEARCH & MODEL EVOLUTION -->
+    <!-- ======================================================== -->
+    <section id="tab-evolution" class="tab-content active">
+      
+      <!-- SECTION 1: HERO -->
+      <div class="evolution-hero-card" id="evolutionHero">
+        <div class="hero-header-row">
+          <div class="hero-badge">RESEARCH &amp; MODEL EVOLUTION</div>
+          <span class="hero-tagline">Empirical Validation on Untouched NSL-KDD KDDTest+</span>
+        </div>
+        <h2 class="hero-title">From Baseline to Robust Intrusion Detection</h2>
+        <p class="hero-subtitle">Experimental progression of XGBoost regularization and cost-sensitive operating-point optimization on NSL-KDD.</p>
+        
+        <div class="progression-banner">
+          <div class="prog-step">
+            <span class="step-label">BASELINE</span>
+            <span class="step-value" id="heroBaselineAcc">80.47%</span>
+            <span class="step-meta">Default Hyperparameters (τ=0.41)</span>
+          </div>
+          <div class="prog-arrow">
+            <span class="arrow-symbol">→</span>
+            <span class="arrow-caption">Generalization Gap Diagnosis</span>
+          </div>
+          <div class="prog-step">
+            <span class="step-label">REGULARIZED</span>
+            <span class="step-value" id="heroRegularizedAcc">81.80%</span>
+            <span class="step-meta">Shallow Trees (d=4) + L1/L2 (τ=0.36)</span>
+          </div>
+          <div class="prog-arrow">
+            <span class="arrow-symbol">→</span>
+            <span class="arrow-caption">Cost-Sensitive Optimization</span>
+          </div>
+          <div class="prog-step highlight-step">
+            <span class="step-label">FINAL COST-SENSITIVE</span>
+            <span class="step-value" id="heroFinalAcc">86.16%</span>
+            <span class="step-meta">Operating Point τ*=0.10</span>
+          </div>
+        </div>
+
+        <div class="hero-summary-bar">
+          <div class="summary-stat-badge">
+            <span class="stat-highlight">+5.69 percentage points</span> accuracy improvement
+          </div>
+          <div class="hero-metrics-pill">
+            <span>Accuracy: <strong>86.16%</strong></span>
+            <span class="pill-divider">•</span>
+            <span>Precision: <strong>96.80%</strong></span>
+            <span class="pill-divider">•</span>
+            <span>Recall: <strong>78.27%</strong></span>
+            <span class="pill-divider">•</span>
+            <span>F1-Score: <strong>0.8655</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2: METHODOLOGY TIMELINE -->
+      <div class="evolution-card" id="evolutionMethodology">
+        <div class="card-header-with-badge">
+          <div>
+            <h3>Experimental Methodology &amp; Optimization Stages</h3>
+            <p class="section-subtext">Click any stage to expand the technical hypothesis, engineering interventions, and empirical validation results.</p>
+          </div>
+          <span class="status-indicator-badge">6 Rigorous Stages</span>
+        </div>
+        <div class="methodology-timeline" id="methodologyTimeline">
+          <!-- Populated dynamically from API -->
+        </div>
+      </div>
+
+      <!-- SECTION 3: ACCURACY PROGRESSION & SECTION 4: METRIC EVOLUTION -->
+      <div class="evolution-grid-2col">
+        <!-- Section 3: Accuracy Progression Bar Chart -->
+        <div class="evolution-card" id="evolutionAccuracy">
+          <div class="card-header-with-badge">
+            <div>
+              <h3>Accuracy Improvement Across Experiments</h3>
+              <p class="section-subtext">Untouched test accuracy on KDDTest+ (N=22,544 instances).</p>
+            </div>
+            <span class="diff-badge positive">+5.69 percentage points</span>
+          </div>
+          <div class="chart-container" id="accuracyChartContainer">
+            <!-- Rendered dynamically -->
+          </div>
+          <div class="chart-annotation-box">
+            <strong>Key Takeaway:</strong> Systematic shallow-tree depth limitation (d=4) combined with validation-derived cost-sensitive thresholding (τ*=0.10) elevated overall accuracy by +5.69 percentage points over the baseline.
+          </div>
+        </div>
+
+        <!-- Section 4: Metric Evolution -->
+        <div class="evolution-card" id="evolutionMetricEvolution">
+          <div class="card-header-with-badge">
+            <div>
+              <h3>Metric Evolution: Precision, Recall &amp; F1</h3>
+              <p class="section-subtext">Comparing Baseline benchmark against the Final Cost-Sensitive Model.</p>
+            </div>
+          </div>
+          <div class="metric-evolution-display" id="metricEvolutionDisplay">
+            <!-- Populated dynamically -->
+          </div>
+          <div class="narrative-callout">
+            "The model substantially increased recall while retaining high precision."
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 5: NOVEL ATTACK GENERALIZATION -->
+      <div class="evolution-card" id="evolutionNovelAttacks">
+        <div class="card-header-with-badge">
+          <div>
+            <h3>Generalization to Novel / Unseen Attack Types</h3>
+            <p class="section-subtext">Attack types absent from the training attack set (17 distinct attack types, 3,750 test samples).</p>
+          </div>
+          <span class="highlight-badge-novel">+1,102 additional novel attacks detected</span>
+        </div>
+
+        <div class="novel-stat-strip">
+          <div class="stat-strip-box">
+            <span class="strip-label">Baseline Detection</span>
+            <span class="strip-value">41.44%</span>
+            <span class="strip-sub">1,554 / 3,750 novel attacks</span>
+          </div>
+          <div class="strip-arrow">→</div>
+          <div class="stat-strip-box">
+            <span class="strip-label">Regularized Model</span>
+            <span class="strip-value">48.27%</span>
+            <span class="strip-sub">1,810 / 3,750 novel attacks</span>
+          </div>
+          <div class="strip-arrow">→</div>
+          <div class="stat-strip-box highlight">
+            <span class="strip-label">Final Cost-Sensitive</span>
+            <span class="strip-value">70.83%</span>
+            <span class="strip-sub">2,656 / 3,750 novel attacks</span>
+          </div>
+          <div class="strip-arrow">→</div>
+          <div class="stat-strip-box">
+            <span class="strip-label">High-Detection Variant</span>
+            <span class="strip-value">76.99%</span>
+            <span class="strip-sub">2,887 / 3,750 novel attacks</span>
+          </div>
+        </div>
+
+        <div class="novel-chart-container" id="novelChartContainer">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- SECTION 6: RECALL VS FALSE POSITIVE RATE (SCATTER PLOT) -->
+      <div class="evolution-card" id="evolutionScatter">
+        <div class="card-header-with-badge">
+          <div>
+            <h3>Operating Point Trade-Off: Recall vs False Positive Rate</h3>
+            <p class="section-subtext">Interactive frontier displaying the trade-off between attack recall and false alarms across candidate configurations.</p>
+          </div>
+          <span class="status-indicator-badge">Interactive Tooltip</span>
+        </div>
+        
+        <div class="scatter-layout">
+          <div class="scatter-canvas-wrapper" id="scatterPlotWrapper">
+            <!-- Interactive SVG Scatter Plot rendered here -->
+            <div id="scatterTooltip" class="scatter-tooltip hidden"></div>
+          </div>
+          <div class="scatter-analysis-panel">
+            <h4>Trade-Off Analysis &amp; Operational Frontier</h4>
+            <p>In high-throughput enterprise intrusion detection, selecting an operating point requires balancing alert fatigue against catastrophic breach exposure:</p>
+            <ul class="analysis-list">
+              <li><strong>Baseline (τ = 0.41):</strong> FPR = 2.84%, Recall = 67.85%. Leaves 32.15% of attacks unflagged due to default probability thresholds.</li>
+              <li><strong>Final Balanced (τ* = 0.10):</strong> FPR = 3.42%, Recall = 78.27%. Achieves the optimal cost-sensitive balance under a 5:1 FN:FP misclassification penalty.</li>
+              <li><strong>High Detection (τ = 0.06):</strong> FPR = 7.63%, Recall = 81.42%. Captures maximal intrusions at the expense of a 2.2x increase in false alarms.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 7: ATTACK CATEGORY IMPROVEMENT & SECTION 8: CONFUSION MATRIX EVOLUTION -->
+      <div class="evolution-grid-2col">
+        <!-- Section 7: Attack Category Improvement -->
+        <div class="evolution-card" id="evolutionCategoryImprovement">
+          <div class="card-header-with-badge">
+            <div>
+              <h3>Attack Category Detection Improvement</h3>
+              <p class="section-subtext">Empirical detection rate on untouched KDDTest+ by primary attack taxonomy.</p>
+            </div>
+          </div>
+          <div class="category-comparison-container" id="categoryComparisonContainer">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Section 8: Confusion Matrix Evolution -->
+        <div class="evolution-card" id="evolutionConfusionMatrix">
+          <div class="card-header-with-badge">
+            <div>
+              <h3>Confusion Matrix Evolution (KDDTest+, N=22,544)</h3>
+              <p class="section-subtext">Side-by-side classification breakdown demonstrating error reduction.</p>
+            </div>
+            <span class="diff-badge positive">False Negatives -1,337</span>
+          </div>
+          <div class="cm-side-by-side" id="cmSideBySide">
+            <!-- Rendered dynamically -->
+          </div>
+          <div class="cm-callout-banner">
+            <strong>Critical IDS Improvement:</strong> False negatives reduced by <strong>1,337</strong> (from 4,126 to 2,789 missed intrusions), dramatically reducing vulnerability exposure.
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 9: FINAL MODEL CONFIGURATION -->
+      <div class="evolution-card" id="evolutionModelConfig">
+        <div class="card-header-with-badge">
+          <div>
+            <h3>Final Model Configuration &amp; Hyperparameter Rationale</h3>
+            <p class="section-subtext">Verified shallow-tree regularized ensemble architecture and empirical change rationale.</p>
+          </div>
+          <span class="status-indicator-badge">Production Architecture</span>
+        </div>
+
+        <div class="config-parameters-grid">
+          <div class="config-param-item">
+            <span class="param-name">n_estimators</span>
+            <span class="param-val">150</span>
+            <span class="param-desc">Boosted Trees</span>
+          </div>
+          <div class="config-param-item highlight">
+            <span class="param-name">max_depth</span>
+            <span class="param-val">4</span>
+            <span class="param-desc">Constrained Depth</span>
+          </div>
+          <div class="config-param-item">
+            <span class="param-name">learning_rate</span>
+            <span class="param-val">0.15</span>
+            <span class="param-desc">Shrinkage Rate</span>
+          </div>
+          <div class="config-param-item">
+            <span class="param-name">subsample</span>
+            <span class="param-val">0.90</span>
+            <span class="param-desc">Row Sampling</span>
+          </div>
+          <div class="config-param-item">
+            <span class="param-name">colsample_bytree</span>
+            <span class="param-val">0.90</span>
+            <span class="param-desc">Feature Sampling</span>
+          </div>
+          <div class="config-param-item highlight">
+            <span class="param-name">min_child_weight</span>
+            <span class="param-val">3</span>
+            <span class="param-desc">Min Leaf Weight</span>
+          </div>
+          <div class="config-param-item highlight">
+            <span class="param-name">gamma</span>
+            <span class="param-val">0.5</span>
+            <span class="param-desc">Min Loss Reduction</span>
+          </div>
+          <div class="config-param-item highlight">
+            <span class="param-name">reg_alpha</span>
+            <span class="param-val">3.0</span>
+            <span class="param-desc">L1 Regularization</span>
+          </div>
+          <div class="config-param-item highlight">
+            <span class="param-name">reg_lambda</span>
+            <span class="param-val">5.0</span>
+            <span class="param-desc">L2 Regularization</span>
+          </div>
+          <div class="config-param-item">
+            <span class="param-name">scale_pos_weight</span>
+            <span class="param-val">1.15</span>
+            <span class="param-desc">Class Weighting</span>
+          </div>
+          <div class="config-param-item highlight-alt">
+            <span class="param-name">operating_threshold</span>
+            <span class="param-val">0.10</span>
+            <span class="param-desc">Decision Cutoff (τ*)</span>
+          </div>
+        </div>
+
+        <div class="table-wrapper config-rationale-table">
+          <table class="cyber-table">
+            <thead>
+              <tr>
+                <th>Hyperparameter</th>
+                <th>Baseline</th>
+                <th>Final Model</th>
+                <th>Engineering Purpose &amp; Rationale</th>
+              </tr>
+            </thead>
+            <tbody id="configRationaleBody">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SECTION 10: RESEARCH FINDINGS -->
+      <div class="evolution-card" id="evolutionFindings">
+        <div class="card-header-with-badge">
+          <div>
+            <h3>Key Empirical Research Findings</h3>
+            <p class="section-subtext">Summary of primary empirical findings from the optimization experiments.</p>
+          </div>
+        </div>
+        <div class="findings-cards-grid" id="findingsCardsGrid">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- SECTION 11: EXPERIMENTAL INTEGRITY -->
+      <div class="evolution-card integrity-card" id="evolutionIntegrity">
+        <div class="card-header-with-badge">
+          <div>
+            <h3>Experimental Integrity &amp; Leak-Free Audit Verification</h3>
+            <p class="section-subtext">Rigorous scientific verification protocol ensuring reproducibility without test data contamination.</p>
+          </div>
+          <span class="status-indicator-badge success">Audit Verified</span>
+        </div>
+        <div class="integrity-grid" id="integrityGrid">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 1: MANUAL TRAFFIC ANALYZER -->
+    <!-- ======================================================== -->
+    <section id="tab-manual" class="tab-content">
+      <div class="section-banner">
+        <div class="banner-info">
+          <h2>Manual Connection Traffic Inspection</h2>
+          <p>Inspect and analyze single network connections by specifying the 40 active NSL-KDD features. The full feature vector is preprocessed through our leak-free pipeline and classified by the trained XGBoost ensemble.</p>
+        </div>
+        <div class="preset-controls">
+          <label for="presetSelect"><strong>⚡ Load Real KDDTest+ Preset:</strong></label>
+          <div class="preset-selector-row">
+            <select id="presetSelect" class="cyber-select">
+              <option value="">-- Select a Real Test Connection --</option>
+            </select>
+            <button id="btnLoadPreset" class="btn btn-secondary">Load Preset</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Preset Info Banner -->
+      <div id="presetInfoBanner" class="preset-info-banner hidden">
+        <span class="info-title">Loaded Test Connection Metadata:</span>
+        <span id="presetLabelBadge" class="preset-badge">Label: Normal</span>
+        <span id="presetCategoryBadge" class="preset-badge">Category: Normal</span>
+        <span id="presetAttackBadge" class="preset-badge">Attack Type: normal</span>
+      </div>
+
+      <!-- Form Grid (6 Groups) -->
+      <form id="trafficForm" class="traffic-form">
+        <div class="form-groups-grid">
+
+          <!-- Group 1: Basic Connection Information -->
+          <div class="form-group-card">
+            <div class="card-header">
+              <span class="group-num">01</span>
+              <h3>Basic Connection Information</h3>
+            </div>
+            <div class="field-row">
+              <label for="field_protocol_type">Protocol Type
+                <span class="tooltip-icon" data-tooltip="Specifies the network protocol used by the connection (TCP, UDP, or ICMP).">ℹ️</span>
+              </label>
+              <select id="field_protocol_type" name="protocol_type" class="cyber-input" required>
+                <option value="tcp">tcp</option>
+                <option value="udp">udp</option>
+                <option value="icmp">icmp</option>
+              </select>
+            </div>
+            <div class="field-row">
+              <label for="field_service">Network Service
+                <span class="tooltip-icon" data-tooltip="Specifies the destination port/service (e.g. http, ftp, smtp, ssh, private).">ℹ️</span>
+              </label>
+              <select id="field_service" name="service" class="cyber-input" required>
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+            <div class="field-row">
+              <label for="field_flag">Connection Flag
+                <span class="tooltip-icon" data-tooltip="Connection status recorded (e.g. SF=Normal establishment/termination, S0=Connection attempt with no reply, REJ=Rejected).">ℹ️</span>
+              </label>
+              <select id="field_flag" name="flag" class="cyber-input" required>
+                <option value="SF">SF (Normal Established)</option>
+                <option value="S0">S0 (SYN without ACK)</option>
+                <option value="REJ">REJ (Connection Rejected)</option>
+                <option value="RSTO">RSTO (Reset by Originator)</option>
+                <option value="RSTR">RSTR (Reset by Responder)</option>
+                <option value="SH">SH (SYN Sent & Reset)</option>
+                <option value="S1">S1 (Connection Established)</option>
+                <option value="S2">S2 (Connection Established Close Attempt)</option>
+                <option value="RSTOS0">RSTOS0 (Reset S0)</option>
+                <option value="S3">S3 (Connection Terminated)</option>
+                <option value="OTH">OTH (Other Flag)</option>
+              </select>
+            </div>
+            <div class="field-row">
+              <label for="field_duration">Duration (seconds)
+                <span class="tooltip-icon" data-tooltip="Total connection duration in seconds from start to termination.">ℹ️</span>
+              </label>
+              <input type="number" id="field_duration" name="duration" class="cyber-input" min="0" value="0" required>
+            </div>
+          </div>
+
+          <!-- Group 2: Data Transfer -->
+          <div class="form-group-card">
+            <div class="card-header">
+              <span class="group-num">02</span>
+              <h3>Data Transfer</h3>
+            </div>
+            <div class="field-row">
+              <label for="field_src_bytes">Source Bytes
+                <span class="tooltip-icon" data-tooltip="Number of payload data bytes transmitted from source to destination.">ℹ️</span>
+              </label>
+              <input type="number" id="field_src_bytes" name="src_bytes" class="cyber-input" min="0" value="294" required>
+              <span class="field-hint">Bytes sent from client to server</span>
+            </div>
+            <div class="field-row">
+              <label for="field_dst_bytes">Destination Bytes
+                <span class="tooltip-icon" data-tooltip="Number of payload data bytes transmitted from destination back to source.">ℹ️</span>
+              </label>
+              <input type="number" id="field_dst_bytes" name="dst_bytes" class="cyber-input" min="0" value="6442" required>
+              <span class="field-hint">Bytes returned from server to client</span>
+            </div>
+          </div>
+
+          <!-- Group 3: Behaviour / Login Information -->
+          <div class="form-group-card">
+            <div class="card-header">
+              <span class="group-num">03</span>
+              <h3>Behaviour & Login Activity</h3>
+            </div>
+            <div class="field-row">
+              <label for="field_logged_in">Successfully Logged In
+                <span class="tooltip-icon" data-tooltip="Indicates whether the connection resulted in a successfully authenticated session (1=Yes, 0=No).">ℹ️</span>
+              </label>
+              <select id="field_logged_in" name="logged_in" class="cyber-input">
+                <option value="1">Yes (1 - Authenticated)</option>
+                <option value="0">No (0 - Unauthenticated)</option>
+              </select>
+            </div>
+            <div class="field-row">
+              <label for="field_num_failed_logins">Failed Login Attempts
+                <span class="tooltip-icon" data-tooltip="Count of failed login attempts during this connection.">ℹ️</span>
+              </label>
+              <input type="number" id="field_num_failed_logins" name="num_failed_logins" class="cyber-input" min="0" max="10" value="0">
+            </div>
+            <div class="field-row">
+              <label for="field_count">Same-Host Connection Count
+                <span class="tooltip-icon" data-tooltip="Number of connections to the same destination host in the past 2-second observation window.">ℹ️</span>
+              </label>
+              <input type="number" id="field_count" name="count" class="cyber-input" min="0" max="1000" value="22">
+            </div>
+            <div class="field-row">
+              <label for="field_srv_count">Same-Service Connection Count
+                <span class="tooltip-icon" data-tooltip="Number of connections to the same service in the past 2-second observation window.">ℹ️</span>
+              </label>
+              <input type="number" id="field_srv_count" name="srv_count" class="cyber-input" min="0" max="1000" value="46">
+            </div>
+            <div class="field-row">
+              <label for="field_num_compromised">Compromised Conditions
+                <span class="tooltip-icon" data-tooltip="Count of compromised conditions or states observed.">ℹ️</span>
+              </label>
+              <input type="number" id="field_num_compromised" name="num_compromised" class="cyber-input" min="0" value="0">
+            </div>
+            <div class="field-row">
+              <label for="field_root_shell">Root Shell Obtained
+                <span class="tooltip-icon" data-tooltip="Indicates whether root/administrator shell privileges were obtained (1=Yes, 0=No).">ℹ️</span>
+              </label>
+              <select id="field_root_shell" name="root_shell" class="cyber-input">
+                <option value="0">No (0 - Standard User)</option>
+                <option value="1">Yes (1 - Root Obtained)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Group 4: Error Rate Information -->
+          <div class="form-group-card">
+            <div class="card-header">
+              <span class="group-num">04</span>
+              <h3>Connection Error Rates</h3>
+            </div>
+            <div class="field-row">
+              <label for="field_serror_rate">SYN Error Rate (Host)
+                <span class="tooltip-icon" data-tooltip="Proportion of connections to the same host with SYN errors (0.0 to 1.0).">ℹ️</span>
+              </label>
+              <input type="number" step="0.01" min="0" max="1" id="field_serror_rate" name="serror_rate" class="cyber-input" value="0.00">
+            </div>
+            <div class="field-row">
+              <label for="field_srv_serror_rate">SYN Error Rate (Service)
+                <span class="tooltip-icon" data-tooltip="Proportion of connections to the same service with SYN errors (0.0 to 1.0).">ℹ️</span>
+              </label>
+              <input type="number" step="0.01" min="0" max="1" id="field_srv_serror_rate" name="srv_serror_rate" class="cyber-input" value="0.00">
+            </div>
+            <div class="field-row">
+              <label for="field_rerror_rate">REJ Error Rate (Host)
+                <span class="tooltip-icon" data-tooltip="Proportion of connections to the same host that were rejected (0.0 to 1.0).">ℹ️</span>
+              </label>
+              <input type="number" step="0.01" min="0" max="1" id="field_rerror_rate" name="rerror_rate" class="cyber-input" value="0.00">
+            </div>
+            <div class="field-row">
+              <label for="field_srv_rerror_rate">REJ Error Rate (Service)
+                <span class="tooltip-icon" data-tooltip="Proportion of connections to the same service that were rejected (0.0 to 1.0).">ℹ️</span>
+              </label>
+              <input type="number" step="0.01" min="0" max="1" id="field_srv_rerror_rate" name="srv_rerror_rate" class="cyber-input" value="0.00">
+            </div>
+            <div class="field-row">
+              <label for="field_same_srv_rate">Same Service Rate
+                <span class="tooltip-icon" data-tooltip="Proportion of connections that were to the same service (0.0 to 1.0).">ℹ️</span>
+              </label>
+              <input type="number" step="0.01" min="0" max="1" id="field_same_srv_rate" name="same_srv_rate" class="cyber-input" value="1.00">
+            </div>
+            <div class="field-row">
+              <label for="field_diff_srv_rate">Different Service Rate
+                <span class="tooltip-icon" data-tooltip="Proportion of connections that were to different services (0.0 to 1.0).">ℹ️</span>
+              </label>
+              <input type="number" step="0.01" min="0" max="1" id="field_diff_srv_rate" name="diff_srv_rate" class="cyber-input" value="0.00">
+            </div>
+            <div class="field-row">
+              <label for="field_srv_diff_host_rate">Service Diff Host Rate
+                <span class="tooltip-icon" data-tooltip="Proportion of connections to the same service that were to different hosts (0.0 to 1.0).">ℹ️</span>
+              </label>
+              <input type="number" step="0.01" min="0" max="1" id="field_srv_diff_host_rate" name="srv_diff_host_rate" class="cyber-input" value="0.11">
+            </div>
+          </div>
+
+          <!-- Group 5: Connection / Security Indicators -->
+          <div class="form-group-card">
+            <div class="card-header">
+              <span class="group-num">05</span>
+              <h3>Security & Privilege Indicators</h3>
+            </div>
+            <div class="field-row">
+              <label for="field_land">Land Attack Flag
+                <span class="tooltip-icon" data-tooltip="Indicates if source and destination IP and port are identical (1=Yes, 0=No).">ℹ️</span>
+              </label>
+              <select id="field_land" name="land" class="cyber-input">
+                <option value="0">No (0 - Different IP/Port)</option>
+                <option value="1">Yes (1 - Spoofed Loopback)</option>
+              </select>
+            </div>
+            <div class="field-row">
+              <label for="field_wrong_fragment">Wrong Fragments
+                <span class="tooltip-icon" data-tooltip="Count of malformed or overlapping packet fragments.">ℹ️</span>
+              </label>
+              <input type="number" id="field_wrong_fragment" name="wrong_fragment" class="cyber-input" min="0" max="10" value="0">
+            </div>
+            <div class="field-row">
+              <label for="field_urgent">Urgent Packets
+                <span class="tooltip-icon" data-tooltip="Count of urgent packets received.">ℹ️</span>
+              </label>
+              <input type="number" id="field_urgent" name="urgent" class="cyber-input" min="0" max="10" value="0">
+            </div>
+            <div class="field-row">
+              <label for="field_hot">Hot Indicators
+                <span class="tooltip-icon" data-tooltip="Number of 'hot' indicators (e.g., executing system binaries, editing sensitive files).">ℹ️</span>
+              </label>
+              <input type="number" id="field_hot" name="hot" class="cyber-input" min="0" value="0">
+            </div>
+            <div class="field-row">
+              <label for="field_su_attempted">Superuser Attempted
+                <span class="tooltip-icon" data-tooltip="Whether 'su root' command was attempted (1=Attempted, 2=Successful, 0=No).">ℹ️</span>
+              </label>
+              <input type="number" id="field_su_attempted" name="su_attempted" class="cyber-input" min="0" max="2" value="0">
+            </div>
+            <div class="field-row">
+              <label for="field_num_root">Root Operations
+                <span class="tooltip-icon" data-tooltip="Number of operations executed with root privileges.">ℹ️</span>
+              </label>
+              <input type="number" id="field_num_root" name="num_root" class="cyber-input" min="0" value="0">
+            </div>
+            <div class="field-row">
+              <label for="field_num_file_creations">File Creations
+                <span class="tooltip-icon" data-tooltip="Number of file creations performed during session.">ℹ️</span>
+              </label>
+              <input type="number" id="field_num_file_creations" name="num_file_creations" class="cyber-input" min="0" value="0">
+            </div>
+            <div class="field-row">
+              <label for="field_num_shells">Shell Prompts Spawned
+                <span class="tooltip-icon" data-tooltip="Number of shell command prompt sessions spawned.">ℹ️</span>
+              </label>
+              <input type="number" id="field_num_shells" name="num_shells" class="cyber-input" min="0" value="0">
+            </div>
+            <div class="field-row">
+              <label for="field_num_access_files">Access Files Touched
+                <span class="tooltip-icon" data-tooltip="Number of operations on access control files (e.g., /etc/passwd).">ℹ️</span>
+              </label>
+              <input type="number" id="field_num_access_files" name="num_access_files" class="cyber-input" min="0" value="0">
+            </div>
+            <div class="field-row">
+              <label for="field_is_host_login">Host Login
+                <span class="tooltip-icon" data-tooltip="Whether the login was directly on the host console (1=Yes, 0=No).">ℹ️</span>
+              </label>
+              <select id="field_is_host_login" name="is_host_login" class="cyber-input">
+                <option value="0">No (0)</option>
+                <option value="1">Yes (1)</option>
+              </select>
+            </div>
+            <div class="field-row">
+              <label for="field_is_guest_login">Guest Login
+                <span class="tooltip-icon" data-tooltip="Whether the connection logged in with a guest account (1=Yes, 0=No).">ℹ️</span>
+              </label>
+              <select id="field_is_guest_login" name="is_guest_login" class="cyber-input">
+                <option value="0">No (0)</option>
+                <option value="1">Yes (1)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Group 6: Destination Host Statistics -->
+          <div class="form-group-card">
+            <div class="card-header">
+              <span class="group-num">06</span>
+              <h3>Destination Host Statistics</h3>
+            </div>
+            <div class="field-row">
+              <label for="field_dst_host_count">Dest Host Count
+                <span class="tooltip-icon" data-tooltip="Count of connections having same destination host address (up to 255).">ℹ️</span>
+              </label>
+              <input type="number" id="field_dst_host_count" name="dst_host_count" class="cyber-input" min="0" max="255" value="180">
+            </div>
+            <div class="field-row">
+              <label for="field_dst_host_srv_count">Dest Host Service Count
+                <span class="tooltip-icon" data-tooltip="Count of connections having same destination host and service (up to 255).">ℹ️</span>
+              </label>
+              <input type="number" id="field_dst_host_srv_count" name="dst_host_srv_count" class="cyber-input" min="0" max="255" value="255">
+            </div>
+            <div class="field-row">
+              <label for="field_dst_host_same_srv_rate">Dest Same Service Rate
+                <span class="tooltip-icon" data-tooltip="Proportion of connections to destination host using same service (0.0 to 1.0).">ℹ️</span>
+              </label>
+              <input type="number" step="0.01" min="0" max="1" id="field_dst_host_same_srv_rate" name="dst_host_same_srv_rate" class="cyber-input" value="1.00">
+            </div>
+            <div class="field-row">
+              <label for="field_dst_host_diff_srv_rate">Dest Diff Service Rate
+                <span class="tooltip-icon" data-tooltip="Proportion of connections to destination host using different services (0.0 to 1.0).">ℹ️</span>
+              </label>
+              <input type="number" step="0.01" min="0" max="1" id="field_dst_host_diff_srv_rate" name="dst_host_diff_srv_rate" class="cyber-input" value="0.00">
+            </div>
+            <div class="field-row">
+              <label for="field_dst_host_same_src_port_rate">Dest Same Source Port Rate
+                <span class="tooltip-icon" data-tooltip="Proportion of connections to destination host from same source port (0.0 to 1.0).">ℹ️</span>
+              </label>
+              <input type="number" step="0.01" min="0" max="1" id="field_dst_host_same_src_port_rate" name="dst_host_same_src_port_rate" class="cyber-input" value="0.01">
+            </div>
+            <div class="field-row">
+              <label for="field_dst_host_srv_diff_host_rate">Dest Srv Diff Host Rate
+                <span class="tooltip-icon" data-tooltip="Proportion of connections to same service originating from different hosts (0.0 to 1.0).">ℹ️</span>
+              </label>
+              <input type="number" step="0.01" min="0" max="1" id="field_dst_host_srv_diff_host_rate" name="dst_host_srv_diff_host_rate" class="cyber-input" value="0.01">
+            </div>
+            <div class="field-row">
+              <label for="field_dst_host_serror_rate">Dest SYN Error Rate
+                <span class="tooltip-icon" data-tooltip="SYN error rate among connections to destination host (0.0 to 1.0).">ℹ️</span>
+              </label>
+              <input type="number" step="0.01" min="0" max="1" id="field_dst_host_serror_rate" name="dst_host_serror_rate" class="cyber-input" value="0.00">
+            </div>
+            <div class="field-row">
+              <label for="field_dst_host_srv_serror_rate">Dest Srv SYN Error Rate
+                <span class="tooltip-icon" data-tooltip="SYN error rate among connections to same service on destination host (0.0 to 1.0).">ℹ️</span>
+              </label>
+              <input type="number" step="0.01" min="0" max="1" id="field_dst_host_srv_serror_rate" name="dst_host_srv_serror_rate" class="cyber-input" value="0.00">
+            </div>
+            <div class="field-row">
+              <label for="field_dst_host_rerror_rate">Dest REJ Error Rate
+                <span class="tooltip-icon" data-tooltip="Rejected connection rate among connections to destination host (0.0 to 1.0).">ℹ️</span>
+              </label>
+              <input type="number" step="0.01" min="0" max="1" id="field_dst_host_rerror_rate" name="dst_host_rerror_rate" class="cyber-input" value="0.00">
+            </div>
+            <div class="field-row">
+              <label for="field_dst_host_srv_rerror_rate">Dest Srv REJ Error Rate
+                <span class="tooltip-icon" data-tooltip="Rejected connection rate among connections to same service on destination host (0.0 to 1.0).">ℹ️</span>
+              </label>
+              <input type="number" step="0.01" min="0" max="1" id="field_dst_host_srv_rerror_rate" name="dst_host_srv_rerror_rate" class="cyber-input" value="0.00">
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Form Submission Bar -->
+        <div class="form-action-bar">
+          <button type="submit" id="btnAnalyze" class="btn btn-primary btn-large">
+            <span class="btn-icon">⚡</span> Analyze Traffic with XGBoost
+          </button>
+          <button type="button" id="btnResetForm" class="btn btn-outline">Reset to Defaults</button>
+        </div>
+      </form>
+
+      <!-- Prediction Result Card -->
+      <div id="predictionResultCard" class="prediction-card hidden">
+        <div class="card-glow"></div>
+        <div class="result-header">
+          <h3>INTRUSION DETECTION RESULT</h3>
+          <span id="resStatusBadge" class="status-badge normal">Status: Normal</span>
+        </div>
+        <div class="result-body-grid">
+          <div class="result-metric-box">
+            <span class="res-label">Prediction:</span>
+            <span id="resPrediction" class="res-value normal-text">NORMAL TRAFFIC</span>
+          </div>
+          <div class="result-metric-box">
+            <span class="res-label">Attack Probability:</span>
+            <span id="resAttackProb" class="res-value">0.00%</span>
+          </div>
+          <div class="result-metric-box">
+            <span class="res-label">Model Confidence:</span>
+            <span id="resConfidence" class="res-value">100.00%</span>
+          </div>
+          <div class="result-metric-box">
+            <span class="res-label">Decision Threshold:</span>
+            <span id="resThreshold" class="res-value">0.50</span>
+          </div>
+        </div>
+
+        <!-- Real Preset Verification Details (if applicable) -->
+        <div id="presetVerificationBox" class="preset-verification-box hidden">
+          <h4>Dataset Ground Truth Verification</h4>
+          <div class="verification-grid">
+            <div><strong>Actual Dataset Label:</strong> <span id="verActualLabel">normal</span></div>
+            <div><strong>Attack Category:</strong> <span id="verAttackCategory">normal</span></div>
+            <div><strong>Verification:</strong> <span id="verStatus" class="ver-correct">✓ Prediction Matches Ground Truth</span></div>
+          </div>
+        </div>
+
+        <!-- SHAP Prediction Explanation -->
+        <div class="explainability-box">
+          <div class="explain-header">
+            <h4>🔬 XGBoost Feature Contribution Explanation (SHAP)</h4>
+            <span class="explain-sub">How individual features pushed the ensemble decision toward Attack or Normal</span>
+          </div>
+          <div class="shap-columns-grid">
+            <div class="shap-column">
+              <h5>Top Contributors Toward ATTACK (+)</h5>
+              <ul id="shapAttackList" class="shap-list">
+                <li class="empty-notice">No significant attack contributors.</li>
+              </ul>
+            </div>
+            <div class="shap-column">
+              <h5>Top Contributors Toward NORMAL (-)</h5>
+              <ul id="shapNormalList" class="shap-list">
+                <li class="empty-notice">No significant normal contributors.</li>
+              </ul>
+            </div>
+          </div>
+          <p class="shap-disclaimer"><em>Note: Feature contributions reflect the mathematical importance calculated across the boosted trees ensemble for this connection and indicate correlation with model predictions rather than direct causality.</em></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 2: "WHAT-IF?" SENSITIVITY LAB -->
+    <!-- ======================================================== -->
+    <section id="tab-whatif" class="tab-content">
+      <div class="section-banner">
+        <div class="banner-info">
+          <h2>"What-If?" Interactive Sensitivity Lab</h2>
+          <p>Investigate how changes to individual network parameters impact the XGBoost ensemble's decision boundary. Modify connection flags, error rates, or byte volumes and compare before/after predictions side by side.</p>
+        </div>
+      </div>
+
+      <div class="whatif-container">
+        <div class="whatif-controls-card">
+          <h3>1. Choose a Starting Connection State</h3>
+          <div class="whatif-row">
+            <button class="btn btn-secondary" id="btnWhatifLoadNormal">Start from Normal HTTP</button>
+            <button class="btn btn-secondary" id="btnWhatifLoadNeptune">Start from DoS / Neptune</button>
+            <button class="btn btn-secondary" id="btnWhatifLoadProbe">Start from Probe / Portscan</button>
+          </div>
+          
+          <h3 style="margin-top: 1.5rem;">2. Modify Target Features to Test Sensitivity</h3>
+          <div class="whatif-features-grid">
+            <div class="whatif-field">
+              <label>Connection Flag (`flag`):</label>
+              <select id="whatif_flag" class="cyber-input">
+                <option value="SF">SF (Normal Established)</option>
+                <option value="S0">S0 (SYN without ACK)</option>
+                <option value="REJ">REJ (Rejected)</option>
+                <option value="RSTO">RSTO (Reset)</option>
+              </select>
+            </div>
+            <div class="whatif-field">
+              <label>SYN Error Rate (`serror_rate`):</label>
+              <input type="number" id="whatif_serror_rate" step="0.05" min="0" max="1" class="cyber-input" value="0.0">
+            </div>
+            <div class="whatif-field">
+              <label>Destination Host SYN Error (`dst_host_serror_rate`):</label>
+              <input type="number" id="whatif_dst_host_serror_rate" step="0.05" min="0" max="1" class="cyber-input" value="0.0">
+            </div>
+            <div class="whatif-field">
+              <label>Connection Count (`count`):</label>
+              <input type="number" id="whatif_count" min="0" max="500" class="cyber-input" value="10">
+            </div>
+            <div class="whatif-field">
+              <label>Logged In (`logged_in`):</label>
+              <select id="whatif_logged_in" class="cyber-input">
+                <option value="1">1 (Yes - Authenticated)</option>
+                <option value="0">0 (No - Unauthenticated)</option>
+              </select>
+            </div>
+            <div class="whatif-field">
+              <label>Source Bytes (`src_bytes`):</label>
+              <input type="number" id="whatif_src_bytes" min="0" class="cyber-input" value="300">
+            </div>
+          </div>
+
+          <div style="margin-top: 1.5rem;">
+            <button id="btnRunWhatIf" class="btn btn-primary btn-large">
+              <span>⚡</span> Run "What-If" Sensitivity Analysis
+            </button>
+          </div>
+        </div>
+
+        <!-- Before vs After Comparison Card -->
+        <div id="whatifResultsCard" class="whatif-results-grid hidden">
+          <div class="comparison-card before-card">
+            <h4>ORIGINAL CONNECTION STATE</h4>
+            <div class="comp-stat">
+              <span>Prediction:</span>
+              <strong id="whatifBeforePred" class="normal-text">NORMAL TRAFFIC</strong>
+            </div>
+            <div class="comp-stat">
+              <span>Attack Probability:</span>
+              <strong id="whatifBeforeProb">0.0%</strong>
+            </div>
+            <div class="comp-details" id="whatifBeforeDetails"></div>
+          </div>
+
+          <div class="comparison-arrow">
+            <span>➜</span>
+            <small>Modified</small>
+          </div>
+
+          <div class="comparison-card after-card">
+            <h4>MODIFIED CONNECTION STATE</h4>
+            <div class="comp-stat">
+              <span>New Prediction:</span>
+              <strong id="whatifAfterPred" class="attack-text">MALICIOUS TRAFFIC</strong>
+            </div>
+            <div class="comp-stat">
+              <span>New Attack Probability:</span>
+              <strong id="whatifAfterProb">98.5%</strong>
+            </div>
+            <div class="comp-stat">
+              <span>Probability Delta:</span>
+              <strong id="whatifProbDelta" class="delta-text">+98.5%</strong>
+            </div>
+            <div class="comp-details" id="whatifAfterDetails"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 3: SIMULATED LIVE TRAFFIC STREAM -->
+    <!-- ======================================================== -->
+    <section id="tab-stream" class="tab-content">
+      <div class="section-banner">
+        <div class="banner-info">
+          <h2>Simulated Live Traffic Monitoring Feed</h2>
+          <p>Streams recorded connection records from <code>KDDTest+.txt</code> through the trained XGBoost model one at a time. Demonstrates how the IDS operates in real time to flag incoming anomalies, update threat counters, and evaluate detection accuracy.</p>
+        </div>
+        <div class="stream-controls">
+          <label>Stream Speed:</label>
+          <select id="streamSpeedSelect" class="cyber-select">
+            <option value="1500">Slow (1.5s)</option>
+            <option value="800" selected>Normal (0.8s)</option>
+            <option value="300">Fast (0.3s)</option>
+          </select>
+          <button id="btnStartStream" class="btn btn-primary">▶ Start Simulation</button>
+          <button id="btnPauseStream" class="btn btn-outline" disabled>⏸ Pause</button>
+          <button id="btnResetStream" class="btn btn-outline">↺ Reset</button>
+        </div>
+      </div>
+
+      <!-- Live Stream Dashboard Counters -->
+      <div class="stream-metrics-grid">
+        <div class="metric-tile">
+          <span class="tile-label">Total Connections Processed</span>
+          <span id="streamCountTotal" class="tile-value">0</span>
+        </div>
+        <div class="metric-tile">
+          <span class="tile-label">Normal Traffic Count</span>
+          <span id="streamCountNormal" class="tile-value normal-text">0</span>
+        </div>
+        <div class="metric-tile">
+          <span class="tile-label">Attacks Detected</span>
+          <span id="streamCountAttack" class="tile-value attack-text">0</span>
+        </div>
+        <div class="metric-tile">
+          <span class="tile-label">Attack Detection Rate</span>
+          <span id="streamAttackRate" class="tile-value">0.0%</span>
+        </div>
+        <div class="metric-tile">
+          <span class="tile-label">Ground-Truth Match Accuracy</span>
+          <span id="streamAccuracy" class="tile-value highlight">--</span>
+        </div>
+      </div>
+
+      <!-- Live Stream Table / Feed -->
+      <div class="stream-feed-card">
+        <h3>Live Connection Event Log</h3>
+        <div class="stream-table-wrapper">
+          <table class="cyber-table" id="streamTable">
+            <thead>
+              <tr>
+                <th>Event #</th>
+                <th>Protocol</th>
+                <th>Service</th>
+                <th>Flag</th>
+                <th>Src Bytes</th>
+                <th>Dst Bytes</th>
+                <th>Attack Prob</th>
+                <th>XGBoost Prediction</th>
+                <th>Actual Label</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="streamTableBody">
+              <tr>
+                <td colspan="10" class="empty-notice">Click "Start Simulation" to begin processing connections from KDDTest+.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 4: BATCH CSV PREDICTION -->
+    <!-- ======================================================== -->
+    <section id="tab-batch" class="tab-content">
+      <div class="section-banner">
+        <div class="banner-info">
+          <h2>Batch Network Traffic CSV Prediction</h2>
+          <p>Upload a CSV file containing multiple connection records. The pipeline validates the 40 active NSL-KDD features, runs XGBoost inference, and displays a filterable predictions table with CSV download capability.</p>
+        </div>
+      </div>
+
+      <div class="batch-upload-card">
+        <div class="upload-dropzone" id="dropZone">
+          <span class="upload-icon">📂</span>
+          <h3>Drag & Drop your CSV file here, or browse</h3>
+          <p>File must contain the standard NSL-KDD feature columns. If <code>attack_type</code> is included, ground-truth accuracy will be evaluated.</p>
+          <input type="file" id="batchFileInput" accept=".csv" class="hidden-file-input">
+          <button type="button" class="btn btn-secondary" onclick="document.getElementById('batchFileInput').click()">Select CSV File</button>
+        </div>
+        <div id="batchFileInfo" class="batch-file-info hidden">
+          <span id="batchFileName">file.csv</span>
+          <button id="btnRunBatch" class="btn btn-primary">Process Batch with XGBoost</button>
+        </div>
+      </div>
+
+      <!-- Batch Results Card -->
+      <div id="batchResultsContainer" class="batch-results-container hidden">
+        <div class="batch-summary-tiles">
+          <div class="metric-tile">
+            <span class="tile-label">Total Rows</span>
+            <span id="batchTotalRows" class="tile-value">0</span>
+          </div>
+          <div class="metric-tile">
+            <span class="tile-label">Flagged Malicious</span>
+            <span id="batchAttacksFlagged" class="tile-value attack-text">0</span>
+          </div>
+          <div class="metric-tile">
+            <span class="tile-label">Classified Normal</span>
+            <span id="batchNormalFlagged" class="tile-value normal-text">0</span>
+          </div>
+        </div>
+
+        <div class="batch-table-card">
+          <div class="table-header-controls">
+            <h3>Batch Prediction Results</h3>
+            <div class="filter-buttons">
+              <button class="btn btn-small filter-btn active" data-filter="all">All</button>
+              <button class="btn btn-small filter-btn" data-filter="normal">Normal Only</button>
+              <button class="btn btn-small filter-btn" data-filter="attack">Malicious Only</button>
+              <button class="btn btn-small filter-btn" data-filter="correct">Correct Only</button>
+              <button class="btn btn-small filter-btn" data-filter="incorrect">Incorrect Only</button>
+            </div>
+          </div>
+          <div class="batch-table-wrapper">
+            <table class="cyber-table" id="batchTable">
+              <thead>
+                <tr>
+                  <th>Row</th>
+                  <th>Prediction</th>
+                  <th>Attack Probability</th>
+                  <th>Actual Label</th>
+                  <th>Validation</th>
+                </tr>
+              </thead>
+              <tbody id="batchTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 5: PERFORMANCE & GENERALIZATION -->
+    <!-- ======================================================== -->
+    <section id="tab-performance" class="tab-content">
+      <div class="section-banner">
+        <div class="banner-info">
+          <h2>Model Performance, Generalization & Novel Attacks</h2>
+          <p>Scientific evaluation of the XGBoost model. Inspect validation vs final untouched test performance, attack category breakdowns, and detection rates on the 17 unseen attack types.</p>
+        </div>
+      </div>
+
+      <!-- Metrics Comparison Table -->
+      <div class="perf-card">
+        <h3>Experimental Performance Comparison</h3>
+        <p class="perf-note">All metrics are computed directly from the actual experiment without fabrication. Notice the validation-to-test generalization gap, which reflects the difficulty of detecting previously unseen attack patterns in <code>KDDTest+</code>.</p>
+        <div class="table-wrapper">
+          <table class="cyber-table comparison-table" id="perfComparisonTable">
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th>Validation (Baseline)</th>
+                <th>Validation (Final Model τ*=0.10)</th>
+                <th>Untouched KDDTest+ (Baseline τ*=0.41)</th>
+                <th>Untouched KDDTest+ (Final Model τ*=0.10)</th>
+              </tr>
+            </thead>
+            <tbody id="perfTableBody">
+              <tr><td colspan="5" class="empty-notice">Loading experimental metrics...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Attack Categories Performance -->
+      <div class="perf-card">
+        <h3>Attack Category Breakdown on Untouched KDDTest+</h3>
+        <div class="category-cards-grid" id="categoryCardsGrid">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Novel / Unseen Attacks Table -->
+      <div class="perf-card">
+        <h3>Unseen / Novel Attack Types Evaluation in KDDTest+</h3>
+        <p class="perf-note">The following 17 attack types were present exclusively in the test set and did NOT appear in the training data. This demonstrates the model's ability to detect zero-day or evolved attack variants using learned traffic signatures.</p>
+        <div class="table-wrapper">
+          <table class="cyber-table" id="novelAttacksTable">
+            <thead>
+              <tr>
+                <th>Attack Type</th>
+                <th>Attack Category</th>
+                <th>Test Samples</th>
+                <th>Detected as Attack</th>
+                <th>Missed as Normal</th>
+                <th>Detection Rate (%)</th>
+              </tr>
+            </thead>
+            <tbody id="novelTableBody">
+              <tr><td colspan="6" class="empty-notice">Loading novel attack evaluations...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 6: MODEL INSIGHTS & VISUALIZATIONS -->
+    <!-- ======================================================== -->
+    <section id="tab-insights" class="tab-content">
+      <div class="section-banner">
+        <div class="banner-info">
+          <h2>Model Insights & Publication-Ready Visualizations</h2>
+          <p>Scientific visualizations generated during the experimental pipeline, suitable for academic project reports and presentation slides.</p>
+        </div>
+      </div>
+
+      <div class="figures-gallery-grid">
+        <div class="figure-card">
+          <h4>1. Class & Attack Category Distribution</h4>
+          <p>Train vs Test sample distributions and logarithmic attack category breakdown.</p>
+          <img src="/api/figures/class_and_category_distribution.png" alt="Class and Category Distribution" class="gallery-img">
+        </div>
+        <div class="figure-card">
+          <h4>2. Correlation Matrix of Network Features</h4>
+          <p>Correlation heatmap highlighting redundant or strongly linked traffic attributes.</p>
+          <img src="/api/figures/correlation_matrix.png" alt="Correlation Matrix" class="gallery-img">
+        </div>
+        <div class="figure-card">
+          <h4>3. Confusion Matrix Comparison</h4>
+          <p>Side-by-side confusion matrices for Baseline vs Tuned XGBoost on KDDTest+.</p>
+          <img src="/api/figures/confusion_matrices_comparison.png" alt="Confusion Matrices" class="gallery-img">
+        </div>
+        <div class="figure-card">
+          <h4>4. Receiver Operating Characteristic (ROC) Curves</h4>
+          <p>Comparative ROC curves with exact Area Under Curve (ROC-AUC) metrics.</p>
+          <img src="/api/figures/roc_curves_comparison.png" alt="ROC Curves" class="gallery-img">
+        </div>
+        <div class="figure-card">
+          <h4>5. Precision-Recall (PR) Curves</h4>
+          <p>Comparative PR curves displaying Average Precision (PR-AUC) under class imbalance.</p>
+          <img src="/api/figures/precision_recall_curves_comparison.png" alt="PR Curves" class="gallery-img">
+        </div>
+        <div class="figure-card">
+          <h4>6. Validation Threshold Optimization Curve</h4>
+          <p>F1, Precision, Recall, and FPR across thresholds τ ∈ [0.05, 0.95] for optimal decision tuning.</p>
+          <img src="/api/figures/threshold_optimization_curve.png" alt="Threshold Optimization" class="gallery-img">
+        </div>
+        <div class="figure-card">
+          <h4>7. Top 20 Feature Importance (Gain vs Weight)</h4>
+          <p>Comparison of features driving tree split quality (Gain) vs split frequency (Weight).</p>
+          <img src="/api/figures/feature_importance_and_shap.png" alt="Feature Importance" class="gallery-img">
+        </div>
+        <div class="figure-card">
+          <h4>8. Model Comparison Bar Chart</h4>
+          <p>Side-by-side metric comparison across all primary performance dimensions.</p>
+          <img src="/api/figures/model_comparison_barchart.png" alt="Model Comparison" class="gallery-img">
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="cyber-footer">
+    <p>CYBERSHIELD INTRUSION DETECTION SYSTEM &copy; B.Tech CSE Project | Powered by XGBoost & NSL-KDD Dataset</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

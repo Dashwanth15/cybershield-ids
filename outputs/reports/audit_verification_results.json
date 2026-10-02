@@ -1,0 +1,200 @@
+{
+  "audit_1_dataset": {
+    "train_rows": 125973,
+    "test_rows": 22544,
+    "train_cols": 45,
+    "test_cols": 45,
+    "target_col": "binary_target",
+    "label_col": "attack_type",
+    "raw_columns_count": 43,
+    "categorical_cols": [
+      "protocol_type",
+      "service",
+      "flag"
+    ],
+    "numerical_cols_count": 37,
+    "train_missing_values": 0,
+    "test_missing_values": 0,
+    "train_duplicates": 0,
+    "test_duplicates": 0,
+    "train_class_dist": {
+      "0": 67343,
+      "1": 58630
+    },
+    "test_class_dist": {
+      "1": 12833,
+      "0": 9711
+    },
+    "train_cat_dist": {
+      "normal": 67343,
+      "DoS": 45927,
+      "Probe": 11656,
+      "R2L": 995,
+      "U2R": 52
+    },
+    "test_cat_dist": {
+      "normal": 9711,
+      "DoS": 7458,
+      "R2L": 2887,
+      "Probe": 2421,
+      "U2R": 67
+    }
+  },
+  "audit_2_leakage": {
+    "difficulty_level_in_features": false,
+    "attack_type_in_features": false,
+    "target_in_features": false,
+    "num_outbound_cmds_in_features": false,
+    "transformed_features_count": 120,
+    "drop_columns": [
+      "num_outbound_cmds",
+      "difficulty_level"
+    ]
+  },
+  "audit_3_split": {
+    "train_split_rows": 100778,
+    "val_split_rows": 25195,
+    "test_rows": 22544,
+    "train_normal_ratio": 0.5345809601301872,
+    "val_normal_ratio": 0.5345901964675531,
+    "test_normal_ratio": 0.43075762952448543
+  },
+  "audit_4_5_models": {
+    "baseline_trees_count": 100,
+    "tuned_trees_count": 150,
+    "tuning_summary": {
+      "best_hyperparameters": {
+        "subsample": 0.9,
+        "scale_pos_weight": 1.15,
+        "reg_lambda": 2.0,
+        "reg_alpha": 1.0,
+        "n_estimators": 150,
+        "min_child_weight": 1,
+        "max_depth": 6,
+        "learning_rate": 0.15,
+        "gamma": 0.2,
+        "colsample_bytree": 0.9
+      },
+      "best_cv_f1": 0.9987096102469444,
+      "tuning_time_seconds": 58.45856213569641,
+      "n_iterations": 15,
+      "cv_folds": 5
+    }
+  },
+  "audit_7_threshold": {
+    "reproduced_optimal_threshold": 0.41,
+    "reproduced_max_val_f1": 0.9991,
+    "claimed_optimal_threshold": 0.41
+  },
+  "audit_8_test_evaluation": {
+    "reproduced_tuned_opt": {
+      "accuracy": 0.8047,
+      "precision": 0.9693,
+      "recall": 0.6785,
+      "f1_score": 0.7982,
+      "roc_auc": 0.9683,
+      "pr_auc": 0.9673,
+      "specificity": 0.9716,
+      "balanced_accuracy": 0.825,
+      "false_positive_rate": 0.0284,
+      "false_negative_rate": 0.3215,
+      "confusion_matrix": {
+        "tn": 9435,
+        "fp": 276,
+        "fn": 4126,
+        "tp": 8707
+      }
+    },
+    "reproduced_baseline": {
+      "accuracy": 0.7995,
+      "precision": 0.9693,
+      "recall": 0.6689,
+      "f1_score": 0.7916,
+      "roc_auc": 0.9641,
+      "pr_auc": 0.9692,
+      "specificity": 0.972,
+      "balanced_accuracy": 0.8204,
+      "false_positive_rate": 0.028,
+      "false_negative_rate": 0.3311,
+      "confusion_matrix": {
+        "tn": 9439,
+        "fp": 272,
+        "fn": 4249,
+        "tp": 8584
+      }
+    }
+  },
+  "audit_11_12_shap": {
+    "normal_attack_prob": 1.58819693751866e-05,
+    "normal_top_attack_contribs": [
+      {
+        "feature": "dst_host_serror_rate",
+        "shap_value": 0.0798,
+        "feature_value": 0.01,
+        "direction": "Toward Attack",
+        "explanation": "Feature 'dst_host_serror_rate' (0.01) contributed positively (+0.080) toward the model's attack prediction."
+      },
+      {
+        "feature": "dst_host_count",
+        "shap_value": 0.0695,
+        "feature_value": 155.0,
+        "direction": "Toward Attack",
+        "explanation": "Feature 'dst_host_count' (155.0) contributed positively (+0.069) toward the model's attack prediction."
+      }
+    ],
+    "normal_top_normal_contribs": [
+      {
+        "feature": "src_bytes",
+        "shap_value": -2.6937,
+        "feature_value": 267.0,
+        "direction": "Toward Normal",
+        "explanation": "Feature 'src_bytes' (267.0) contributed negatively (-2.694) toward the model's normal prediction."
+      },
+      {
+        "feature": "dst_host_srv_count",
+        "shap_value": -2.424,
+        "feature_value": 255.0,
+        "direction": "Toward Normal",
+        "explanation": "Feature 'dst_host_srv_count' (255.0) contributed negatively (-2.424) toward the model's normal prediction."
+      }
+    ],
+    "neptune_attack_prob": 0.9999395608901978,
+    "neptune_top_attack_contribs": [
+      {
+        "feature": "src_bytes",
+        "shap_value": 4.3918,
+        "feature_value": 0.0,
+        "direction": "Toward Attack",
+        "explanation": "Feature 'src_bytes' (0.0) contributed positively (+4.392) toward the model's attack prediction."
+      },
+      {
+        "feature": "count",
+        "shap_value": 1.9029,
+        "feature_value": 229.0,
+        "direction": "Toward Attack",
+        "explanation": "Feature 'count' (229.0) contributed positively (+1.903) toward the model's attack prediction."
+      }
+    ],
+    "neptune_top_normal_contribs": [
+      {
+        "feature": "dst_host_same_src_port_rate",
+        "shap_value": -0.5808,
+        "feature_value": 0.0,
+        "direction": "Toward Normal",
+        "explanation": "Feature 'dst_host_same_src_port_rate' (0.0) contributed negatively (-0.581) toward the model's normal prediction."
+      },
+      {
+        "feature": "dst_host_diff_srv_rate",
+        "shap_value": -0.3449,
+        "feature_value": 0.06,
+        "direction": "Toward Normal",
+        "explanation": "Feature 'dst_host_diff_srv_rate' (0.06) contributed negatively (-0.345) toward the model's normal prediction."
+      }
+    ]
+  },
+  "audit_13_batch": {
+    "batch_size": 20,
+    "attacks_predicted": 6,
+    "normal_predicted": 14
+  }
+}

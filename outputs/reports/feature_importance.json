@@ -1,0 +1,166 @@
+{
+  "top_gain": [
+    {
+      "feature": "service_ecr_i",
+      "importance": 1162.5272216796875
+    },
+    {
+      "feature": "src_bytes",
+      "importance": 702.6590576171875
+    },
+    {
+      "feature": "service_http",
+      "importance": 521.4764404296875
+    },
+    {
+      "feature": "wrong_fragment",
+      "importance": 146.86399841308594
+    },
+    {
+      "feature": "hot",
+      "importance": 125.49334716796875
+    },
+    {
+      "feature": "dst_host_same_srv_rate",
+      "importance": 71.34502410888672
+    },
+    {
+      "feature": "logged_in",
+      "importance": 70.92706298828125
+    },
+    {
+      "feature": "dst_bytes",
+      "importance": 65.6862564086914
+    },
+    {
+      "feature": "num_compromised",
+      "importance": 56.03103256225586
+    },
+    {
+      "feature": "count",
+      "importance": 47.720252990722656
+    },
+    {
+      "feature": "dst_host_srv_rerror_rate",
+      "importance": 47.52735137939453
+    },
+    {
+      "feature": "dst_host_same_src_port_rate",
+      "importance": 41.78440475463867
+    },
+    {
+      "feature": "dst_host_srv_count",
+      "importance": 40.8950080871582
+    },
+    {
+      "feature": "service_ftp",
+      "importance": 40.64432907104492
+    },
+    {
+      "feature": "protocol_type_tcp",
+      "importance": 37.449928283691406
+    },
+    {
+      "feature": "protocol_type_icmp",
+      "importance": 37.441429138183594
+    },
+    {
+      "feature": "service_private",
+      "importance": 36.93580627441406
+    },
+    {
+      "feature": "service_smtp",
+      "importance": 29.061189651489258
+    },
+    {
+      "feature": "service_eco_i",
+      "importance": 27.255996704101562
+    },
+    {
+      "feature": "service_ftp_data",
+      "importance": 26.60259246826172
+    }
+  ],
+  "top_weight": [
+    {
+      "feature": "src_bytes",
+      "importance": 493.0
+    },
+    {
+      "feature": "dst_bytes",
+      "importance": 198.0
+    },
+    {
+      "feature": "dst_host_diff_srv_rate",
+      "importance": 185.0
+    },
+    {
+      "feature": "dst_host_count",
+      "importance": 178.0
+    },
+    {
+      "feature": "dst_host_same_srv_rate",
+      "importance": 162.0
+    },
+    {
+      "feature": "duration",
+      "importance": 162.0
+    },
+    {
+      "feature": "dst_host_srv_count",
+      "importance": 155.0
+    },
+    {
+      "feature": "dst_host_rerror_rate",
+      "importance": 141.0
+    },
+    {
+      "feature": "dst_host_same_src_port_rate",
+      "importance": 136.0
+    },
+    {
+      "feature": "dst_host_srv_diff_host_rate",
+      "importance": 106.0
+    },
+    {
+      "feature": "dst_host_serror_rate",
+      "importance": 100.0
+    },
+    {
+      "feature": "count",
+      "importance": 92.0
+    },
+    {
+      "feature": "service_private",
+      "importance": 88.0
+    },
+    {
+      "feature": "hot",
+      "importance": 86.0
+    },
+    {
+      "feature": "srv_count",
+      "importance": 68.0
+    },
+    {
+      "feature": "dst_host_srv_serror_rate",
+      "importance": 65.0
+    },
+    {
+      "feature": "service_ftp_data",
+      "importance": 59.0
+    },
+    {
+      "feature": "protocol_type_icmp",
+      "importance": 55.0
+    },
+    {
+      "feature": "logged_in",
+      "importance": 46.0
+    },
+    {
+      "feature": "diff_srv_rate",
+      "importance": 43.0
+    }
+  ]
+}

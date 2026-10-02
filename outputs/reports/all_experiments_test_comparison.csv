@@ -1,0 +1,17 @@
+experiment_id,description,threshold,test_accuracy,test_precision,test_recall,test_f1,test_roc_auc,test_specificity,test_fpr,test_fnr,tn,fp,fn,tp
+Exp0_Baseline,"Current verified baseline (n=150, d=6, lr=0.15, scale_pos=1.15)",0.41,80.47,96.93,67.85,0.7982,0.9683,97.16,2.84,32.15,9435,276,4126,8707
+Exp1_Feature_Engineering,Baseline + 10 domain interaction features,0.53,78.79,96.81,64.88,0.7769,0.9615,97.18,2.82,35.12,9437,274,4507,8326
+Exp2a_Shallower_d4,"max_depth=4, min_child=3, alpha=3.0, lambda=5.0",0.36,81.8,96.9,70.28,0.8147,0.9618,97.02,2.98,29.72,9422,289,3814,9019
+Exp2b_Shallower_d5,"max_depth=5, min_child=3, alpha=2.0, lambda=5.0",0.37,80.42,96.88,67.79,0.7977,0.9666,97.12,2.88,32.21,9431,280,4133,8700
+Exp2c_Strong_L1_L2,"max_depth=6, min_child=5, alpha=5.0, lambda=10.0",0.43,80.26,96.86,67.51,0.7956,0.9631,97.11,2.89,32.49,9430,281,4170,8663
+Exp2d_Very_Strong_Reg,"max_depth=4, min_child=10, alpha=10.0, lambda=20.0",0.51,77.85,96.72,63.24,0.7647,0.9566,97.17,2.83,36.76,9436,275,4718,8115
+Exp3a_Colsample_0.7,"colsample_bytree=0.7, subsample=0.8",0.4,80.69,96.98,68.2,0.8008,0.9686,97.19,2.81,31.8,9438,273,4081,8752
+Exp3b_Colsample_0.8,"colsample_bytree=0.8, subsample=0.8",0.39,80.54,96.94,67.97,0.7991,0.9686,97.17,2.83,32.03,9436,275,4111,8722
+Exp3c_Colsample_0.6,"colsample_bytree=0.6, subsample=0.8",0.38,81.03,96.97,68.82,0.8051,0.9672,97.16,2.84,31.18,9435,276,4001,8832
+Exp4a_ScalePos_1.0,scale_pos_weight=1.0,0.49,79.56,96.87,66.24,0.7867,0.9678,97.17,2.83,33.76,9436,275,4333,8500
+Exp4b_ScalePos_1.3,scale_pos_weight=1.3,0.5,79.28,96.93,65.69,0.7831,0.9664,97.25,2.75,34.31,9444,267,4403,8430
+Exp4c_ScalePos_1.5,scale_pos_weight=1.5,0.64,79.25,96.83,65.7,0.7828,0.967,97.16,2.84,34.3,9435,276,4402,8431
+Exp4d_ScalePos_1.8,scale_pos_weight=1.8,0.67,79.05,96.81,65.34,0.7802,0.9668,97.16,2.84,34.66,9435,276,4448,8385
+Exp5_Category_Weights,"Category-aware sample weights: R2L=3.0, U2R=5.0, Probe=1.2, DoS=1.0",0.55,79.03,96.82,65.31,0.78,0.9654,97.17,2.83,34.69,9436,275,4452,8381
+Exp9a_Comb1_FE_Reg_Sub,FE + d=5 + colsample=0.8 + reg_alpha=2 + reg_lambda=5 + scale_pos=1.2,0.4,79.62,96.79,66.4,0.7876,0.9658,97.09,2.91,33.6,9428,283,4312,8521
+Exp9b_Comb2_Base_Reg_Sub,Baseline features + d=5 + colsample=0.7 + reg_alpha=2 + reg_lambda=5 + scale_pos=1.3,0.52,79.19,96.84,65.59,0.7821,0.9681,97.17,2.83,34.41,9436,275,4416,8417

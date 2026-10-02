@@ -1,0 +1,138 @@
+[
+  {
+    "attack_type": "apache2",
+    "attack_category": "DoS",
+    "total_samples": 737,
+    "detected_as_attack": 647,
+    "missed_as_normal": 90,
+    "detection_rate_pct": 87.79
+  },
+  {
+    "attack_type": "httptunnel",
+    "attack_category": "R2L",
+    "total_samples": 133,
+    "detected_as_attack": 39,
+    "missed_as_normal": 94,
+    "detection_rate_pct": 29.32
+  },
+  {
+    "attack_type": "mailbomb",
+    "attack_category": "DoS",
+    "total_samples": 293,
+    "detected_as_attack": 224,
+    "missed_as_normal": 69,
+    "detection_rate_pct": 76.45
+  },
+  {
+    "attack_type": "mscan",
+    "attack_category": "Probe",
+    "total_samples": 996,
+    "detected_as_attack": 863,
+    "missed_as_normal": 133,
+    "detection_rate_pct": 86.65
+  },
+  {
+    "attack_type": "named",
+    "attack_category": "R2L",
+    "total_samples": 17,
+    "detected_as_attack": 7,
+    "missed_as_normal": 10,
+    "detection_rate_pct": 41.18
+  },
+  {
+    "attack_type": "processtable",
+    "attack_category": "DoS",
+    "total_samples": 685,
+    "detected_as_attack": 533,
+    "missed_as_normal": 152,
+    "detection_rate_pct": 77.81
+  },
+  {
+    "attack_type": "ps",
+    "attack_category": "U2R",
+    "total_samples": 15,
+    "detected_as_attack": 10,
+    "missed_as_normal": 5,
+    "detection_rate_pct": 66.67
+  },
+  {
+    "attack_type": "saint",
+    "attack_category": "Probe",
+    "total_samples": 319,
+    "detected_as_attack": 319,
+    "missed_as_normal": 0,
+    "detection_rate_pct": 100.0
+  },
+  {
+    "attack_type": "sendmail",
+    "attack_category": "R2L",
+    "total_samples": 14,
+    "detected_as_attack": 0,
+    "missed_as_normal": 14,
+    "detection_rate_pct": 0.0
+  },
+  {
+    "attack_type": "snmpgetattack",
+    "attack_category": "R2L",
+    "total_samples": 178,
+    "detected_as_attack": 0,
+    "missed_as_normal": 178,
+    "detection_rate_pct": 0.0
+  },
+  {
+    "attack_type": "snmpguess",
+    "attack_category": "R2L",
+    "total_samples": 331,
+    "detected_as_attack": 2,
+    "missed_as_normal": 329,
+    "detection_rate_pct": 0.6
+  },
+  {
+    "attack_type": "sqlattack",
+    "attack_category": "U2R",
+    "total_samples": 2,
+    "detected_as_attack": 2,
+    "missed_as_normal": 0,
+    "detection_rate_pct": 100.0
+  },
+  {
+    "attack_type": "udpstorm",
+    "attack_category": "DoS",
+    "total_samples": 2,
+    "detected_as_attack": 2,
+    "missed_as_normal": 0,
+    "detection_rate_pct": 100.0
+  },
+  {
+    "attack_type": "worm",
+    "attack_category": "R2L",
+    "total_samples": 2,
+    "detected_as_attack": 0,
+    "missed_as_normal": 2,
+    "detection_rate_pct": 0.0
+  },
+  {
+    "attack_type": "xlock",
+    "attack_category": "R2L",
+    "total_samples": 9,
+    "detected_as_attack": 1,
+    "missed_as_normal": 8,
+    "detection_rate_pct": 11.11
+  },
+  {
+    "attack_type": "xsnoop",
+    "attack_category": "R2L",
+    "total_samples": 4,
+    "detected_as_attack": 1,
+    "missed_as_normal": 3,
+    "detection_rate_pct": 25.0
+  },
+  {
+    "attack_type": "xterm",
+    "attack_category": "U2R",
+    "total_samples": 13,
+    "detected_as_attack": 6,
+    "missed_as_normal": 7,
+    "detection_rate_pct": 46.15
+  }
+]
