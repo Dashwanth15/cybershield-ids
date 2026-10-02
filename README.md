@@ -2,7 +2,7 @@
 
 # CyberShield IDS
 
-**Machine-Learning-Powered Network Intrusion Detection & Explainable Cybersecurity Platform**
+**Network Intrusion Detection System Using XGBoost Algorithm & Explainable AI (SHAP)**
 
 [![Python Version](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![Framework](https://img.shields.io/badge/framework-Flask-black.svg)](https://flask.palletsprojects.com/)
@@ -11,7 +11,7 @@
 [![Benchmark](https://img.shields.io/badge/Benchmark-NSL--KDD-darkblue.svg)](https://www.unb.ca/cic/datasets/nsl.html)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-*An end-to-end, scientifically validated network security platform combining regularized gradient boosting, asymmetric cost-sensitive threshold optimization, microsecond inference, and local SHAP explainability.*
+*An end-to-end, scientifically validated network intrusion detection system powered by the XGBoost algorithm, combining regularized gradient boosting, asymmetric cost-sensitive threshold optimization, microsecond inference, and local SHAP explainability.*
 
 [Live Demo Placeholder](#) • [Technical Paper / Report](#) • [Architecture](#system-architecture) • [Verified Benchmarks](#empirical-benchmark-results) • [Quickstart](#getting-started)
 
