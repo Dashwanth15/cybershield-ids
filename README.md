@@ -355,7 +355,7 @@ cybershield-ids/
 Clone the repository and install the required dependencies:
 
 ```bash
-git clone https://github.com/your-username/cybershield-ids.git
+git clone https://github.com/Dashwanth15/cybershield-ids.git
 cd cybershield-ids
 pip install -r requirements.txt
 ```
